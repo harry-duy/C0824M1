@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let begin =1  ;
+  let tmp = 1;
+  document.write(begin + "  ");
+  document.write(tmp + "  ");
+  begin = tmp;
+  for ( let i = 1 ;i < 20 ; i++ ){
+    for (let j =0 ; j < 20; j++){
+      tmp += begin;
+      document.write(tmp + "  ");
+
+      break;
+    }
+
+  }
+</script>
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610
+</body>
+</html>

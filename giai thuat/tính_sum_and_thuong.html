@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm tính tổng và tích các chữ số của một số nguyên dương m
+  function sumAndProductOfDigits(m) {
+    let sum = 0;        // Tổng các chữ số
+    let product = 1;    // Tích các chữ số
+
+    // Chuyển số m thành chuỗi để tách từng chữ số
+    let numStr = m.toString();
+
+    for (let i = 0; i < numStr.length; i++) {
+      let digit = parseInt(numStr[i]);  // Lấy từng chữ số
+      sum += digit;                     // Cộng vào tổng
+      product *= digit;                 // Nhân vào tích
+    }
+
+    return { sum: sum, product: product };
+  }
+
+  // Nhập giá trị m từ người dùng
+  let m = parseInt(prompt("Nhập số nguyên dương m:"));
+
+  // Kiểm tra xem m có hợp lệ hay không
+  if (isNaN(m) || m <= 0) {
+    alert("Vui lòng nhập một số nguyên dương!");
+  } else {
+    let result = sumAndProductOfDigits(m);
+    alert(`Tổng các chữ số của ${m}: S = ${result.sum}`);
+    alert(`Tích các chữ số của ${m}: P = ${result.product}`);
+  }
+</script>
+
 </body>
 </html>

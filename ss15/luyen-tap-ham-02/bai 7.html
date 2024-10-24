@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm đổi chỗ hai số nguyên bất kì
+  function doiChepSoNguyen(a, b) {
+    // Chuyển giá trị truyền vào thành số nguyên
+    a = parseInt(a);
+    b = parseInt(b);
+
+    // Đổi chỗ hai số nguyên
+    let temp = a;
+    a = b;
+    b = temp;
+
+    // Trả về hai số nguyên đã đổi chỗ
+    return [a, b];
+  }
+
+  // Gọi hàm prompt để người dùng nhập vào 2 số nguyên bất kì
+  let a = prompt("Xin mời bạn nhập vào số nguyên thứ nhất: ");
+  let b = prompt("Xin mời bạn nhập vào số nguyên thứ hai: ");
+
+  // Gọi hàm doiChepSoNguyen với 2 số nguyên
+  let [aSau, bSau] = doiChepSoNguyen(a, b);
+
+  // Hiển thị kết quả trên màn hình
+  document.write("Sau khi đổi chỗ: số thứ nhất là " + aSau + ", số thứ hai là " + bSau);
+</script>
+
 </body>
 </html>

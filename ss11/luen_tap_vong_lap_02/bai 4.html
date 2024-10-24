@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    for (i = 0; i < 6;i++){
+        if (i == 0 || i == 5){
+            for (j = 0; j < 21; j++){
+                document.write("*");
+            }document.write("<br>");
+        }
+        for ( k = 0; k < 21; k++){
+            if (k == 0 || k == 20){
+                document.write("*");
+            }else {
+                document.write("&nbsp;&nbsp;");
+            }
+        }document.write("<br>");
+
+    }
+</script>
+
 </body>
 </html>

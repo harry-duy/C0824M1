@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    function drawSimpleHeart() {
+        let heart = '';
+        let size = 6; // Kích thước đơn giản của trái tim
+
+        // Vẽ phần trên của trái tim (dạng 2 nửa hình tròn)
+        for (let i = size / 2; i <= size; i += 2) {
+            for (let j = 1; j < size - i; j += 2) {
+                heart += ' '; // Thêm khoảng trắng
+            }
+            for (let j = 1; j <= i; j++) {
+                heart += '*'; // Thêm dấu *
+            }
+            for (let j = 1; j <= size - i; j++) {
+                heart += ' '; // Thêm khoảng trắng ở giữa
+            }
+            for (let j = 1; j <= i; j++) {
+                heart += '*'; // Thêm dấu *
+            }
+            heart += '\n'; // Xuống dòng
+        }
+
+        // Vẽ phần dưới của trái tim (dạng tam giác ngược)
+        for (let i = size; i >= 1; i--) {
+            for (let j = i; j < size; j++) {
+                heart += ' '; // Thêm khoảng trắng
+            }
+            for (let j = 1; j <= (i * 2) - 1; j++) {
+                heart += '*'; // Thêm dấu *
+            }
+            heart += '\n'; // Xuống dòng
+        }
+
+        console.log(heart); // In trái tim ra console
+    }
+
+    // Gọi hàm để vẽ trái tim
+    drawSimpleHeart();
+</script>
+
 </body>
 </html>

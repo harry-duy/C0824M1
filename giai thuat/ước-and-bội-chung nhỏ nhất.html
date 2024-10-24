@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm tính UCLN của 2 số a và b
+  function gcd(a, b) {
+    while (b !== 0) {
+      let temp = b;
+      b = a % b;
+      a = temp;
+    }
+    return a;
+  }
+
+  // Hàm tính BCNN của 2 số a và b dựa trên UCLN
+  function lcm(a, b) {
+    return (a * b) / gcd(a, b);
+  }
+
+  // Nhập giá trị a và b từ người dùng
+  let a = parseInt(prompt("Nhập số nguyên dương a:"));
+  let b = parseInt(prompt("Nhập số nguyên dương b:"));
+
+  // Kiểm tra xem a và b có hợp lệ hay không
+  if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+    alert("Vui lòng nhập hai số nguyên dương!");
+  } else {
+    let ucln = gcd(a, b);
+    let bcnn = lcm(a, b);
+    alert(`UCLN của ${a} và ${b} là: ${ucln}`);
+    alert(`BCNN của ${a} và ${b} là: ${bcnn}`);
+  }
+</script>
+
 </body>
 </html>

@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Khởi tạo mảng rỗng
+  let numbers = [];
+
+  // Nhập 10 phần tử vào mảng
+  for (let i = 0; i < 10; i++) {
+    let number = parseInt(prompt("Nhap phan tu thu " + (i + 1) + ":"));
+    numbers.push(number);
+  }
+
+  // Nhập phần tử số nguyên V
+  let V = parseInt(prompt("Nhap phan tu so nguyen V:"));
+
+  // Kiểm tra xem V có nằm trong mảng số nguyên không
+  let index = numbers.indexOf(V);
+
+  if (index !== -1) {
+    // Dịch các phần tử bên phải V sang vị trí của V
+    for (let i = index; i < numbers.length - 1; i++) {
+      numbers[i] = numbers[i + 1];
+    }
+    // Gán 0 cho phần tử cuối cùng của mảng
+    numbers[numbers.length - 1] = 0;
+
+    console.log("V is in the array and has been removed");
+    console.log("Updated array: " + numbers);
+  } else {
+    console.log("V is not in the array");
+  }
+</script>
+
 </body>
 </html>

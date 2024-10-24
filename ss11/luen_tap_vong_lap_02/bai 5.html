@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function tinhLaiNganHang(soTienBanDau, soThang, laiXuat) {
+    for (let thang = 0; thang < soThang; thang++) {
+      soTienBanDau += soTienBanDau * (laiXuat / 100);
+    }
+    return soTienBanDau;
+  }
+
+  // Ví dụ sử dụng
+  let soTienBanDau = +prompt("Nhập số tiền vay: ");
+  let soThang = +prompt("Nhập số tháng vay: ");           // Số tháng cho vay
+  let laiXuat = 5;            // Lãi xuất hàng tháng (5%)
+
+  let soTienSauKhiTinhLai = tinhLaiNganHang(soTienBanDau, soThang, laiXuat);
+  console.log(`Số tiền sau ${soThang} tháng là: ${soTienSauKhiTinhLai.toFixed(2)} đồng`);
+</script>
+
 </body>
 </html>

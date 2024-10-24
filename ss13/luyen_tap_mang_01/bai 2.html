@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Khởi tạo mảng số nguyên gồm 10 phần tử khác nhau
+  let numbers = [5, 12, 7, 10, 3, 15, 8, 20, 6, 11];
+
+  // Khởi tạo biến lưu trữ giá trị lớn nhất và vị trí của nó
+  let max = numbers[0];
+  let maxIndex = 0;
+
+  // Duyệt qua từng phần tử trong mảng
+  for (let i = 1; i < numbers.length; i++) {
+    // Kiểm tra nếu phần tử hiện tại lớn hơn giá trị lớn nhất hiện tại
+    if (numbers[i] > max) {
+      max = numbers[i]; // Cập nhật giá trị lớn nhất
+      maxIndex = i;    // Cập nhật vị trí của giá trị lớn nhất
+    }
+  }
+
+  // Hiển thị kết quả
+  console.log("Phần tử có giá trị lớn nhất là: " + max);
+  console.log("Vị trí của phần tử đó trong mảng là: " + maxIndex);
+</script>
+
 </body>
 </html>

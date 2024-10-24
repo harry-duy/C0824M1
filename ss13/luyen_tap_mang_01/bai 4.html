@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Khởi tạo mảng rỗng
+  let numbers = [];
+
+  // Nhập số lượng phần tử trong mảng
+  let n = parseInt(prompt("Nhap so luong phan tu trong mang:"));
+
+  // Nhập từng phần tử vào mảng
+  for (let i = 0; i < n; i++) {
+    let number = parseInt(prompt("Nhap phan tu thu " + (i + 1) + ":"));
+    numbers.push(number);
+  }
+
+  // Đảo ngược các phần tử trong mảng
+  numbers.reverse();
+
+  // Hiển thị mảng sau khi đảo ngược
+  console.log("Mảng sau khi đảo ngược: " + numbers);
+</script>
+
 </body>
 </html>

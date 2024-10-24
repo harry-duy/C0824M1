@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm tính giai thừa của một số
+  function factorial(num) {
+    let result = 1;
+    for (let i = 1; i <= num; i++) {
+      result *= i;
+    }
+    return result;
+  }
+
+  // Hàm tính tổng S
+  function calculateSum(n) {
+    let sum = 15; // Bắt đầu từ 15
+    for (let i = 1; i <= n; i++) {
+      if (i % 2 === 0) {
+        sum += 1 / factorial(i); // Số chẵn thì cộng
+      } else {
+        sum -= 1 / factorial(i); // Số lẻ thì trừ
+      }
+    }
+    return sum;
+  }
+
+  // Nhập giá trị n từ người dùng
+  let n = parseInt(prompt("Nhập số nguyên dương n:"));
+
+  // Kiểm tra xem n có hợp lệ hay không
+  if (isNaN(n) || n <= 0) {
+    alert("Vui lòng nhập một số nguyên dương!");
+  } else {
+    let result = calculateSum(n);
+    alert(`Tổng S = 15 - 1 + 1/2! - 1/3! + ... + (-1)^n * 1/n! là: ${result}`);
+  }
+</script>
+
 </body>
 </html>

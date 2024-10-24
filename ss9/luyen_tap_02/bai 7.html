@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function solveQuadraticEquation(a, b, c) {
+    let delta = b * b - 4 * a * c;
+
+    if (delta < 0) {
+      return "Phương trình vô nghiệm.";
+    } else if (delta === 0) {
+      let x = -b / (2 * a);
+      return "Phương trình có nghiệm kép: x = " + x;
+    } else {
+      let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+      let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+      return "Phương trình có hai nghiệm phân biệt: x1 = " + x1 + ", x2 = " + x2;
+    }
+  }
+
+  let aInput = prompt("Nhập hệ số a:");
+  let bInput = prompt("Nhập hệ số b:");
+  let cInput = prompt("Nhập hệ số c:");
+  let a = parseFloat(aInput);
+  let b = parseFloat(bInput);
+  let c = parseFloat(cInput);
+
+  let solution = solveQuadraticEquation(a, b, c);
+  console.log(solution);
+</script>
+
 </body>
 </html>

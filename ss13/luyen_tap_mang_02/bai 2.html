@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Nhập mảng ký tự từ người dùng
+  let input = prompt("Nhập các ký tự cách nhau bằng dấu cách:");
+
+  // Chuyển chuỗi nhập vào thành mảng các ký tự
+  let characters = input.split(' ');
+
+  // Sử dụng phương thức reverse() để đảo ngược mảng
+  characters.reverse();
+
+  // Chuyển mảng đảo ngược thành chuỗi
+  let reversedString = characters.join('');
+
+  // In ra chuỗi đảo ngược
+  console.log("Chuỗi đảo ngược là: " + reversedString);
+</script>
+
 </body>
 </html>

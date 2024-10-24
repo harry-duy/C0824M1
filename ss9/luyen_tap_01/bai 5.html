@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Nhập các điểm từ người dùng (sử dụng hàm prompt để mô phỏng)
+  let diemKiemTra = parseFloat(prompt("Nhập điểm bài kiểm tra:"));
+  let diemGiuaKy = parseFloat(prompt("Nhập điểm thi giữa kỳ:"));
+  let diemCuoiKy = parseFloat(prompt("Nhập điểm thi cuối kỳ:"));
+
+  // Tính điểm trung bình
+  let diemTB = (diemKiemTra + diemGiuaKy + diemCuoiKy) / 3;
+
+  // Xác định xếp loại học lực dựa trên điểm trung bình
+  let xepLoai;
+
+  if (diemTB >= 9) {
+    xepLoai = "Xuất sắc";
+  } else if (diemTB >= 7) {
+    xepLoai = "Giỏi";
+  } else if (diemTB >= 5) {
+    xepLoai = "Khá";
+  } else if (diemTB >= 3) {
+    xepLoai = "Trung bình";
+  } else {
+    xepLoai = "Yếu";
+  }
+
+  // In ra kết quả xếp loại học lực
+  console.log("Điểm trung bình: " + diemTB.toFixed(2));
+  console.log("Xếp loại học lực: " + xepLoai);
+</script>
+
 </body>
 </html>

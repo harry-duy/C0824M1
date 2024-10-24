@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function calculateElectricityBill(unitsConsumed) {
+    let bill = 0;
+
+    if (unitsConsumed <= 50) {
+      bill = unitsConsumed * 1.5; // Giá cho 50 đơn vị đầu tiên
+    } else if (unitsConsumed <= 100) {
+      bill = 50 * 1.5 + (unitsConsumed - 50) * 2; // Giá cho 50 đơn vị tiếp theo
+    } else if (unitsConsumed <= 200) {
+      bill = 50 * 1.5 + 50 * 2 + (unitsConsumed - 100) * 3; // Giá cho 100 đơn vị tiếp theo
+    } else {
+      bill = 50 * 1.5 + 50 * 2 + 100 * 3 + (unitsConsumed - 200) * 4; // Giá cho các đơn vị còn lại
+    }
+
+    return bill;
+  }
+
+  let unitsInput = prompt("Nhập số đơn vị điện tiêu thụ:");
+  let unitsConsumed = parseFloat(unitsInput);
+
+  let bill = calculateElectricityBill(unitsConsumed);
+  console.log("Hóa đơn điện là: " + bill);
+</script>
+
 </body>
 </html>

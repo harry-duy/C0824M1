@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Khởi tạo mảng số nguyên gồm 10 phần tử
+  let numbers = [5, 12, 7, 10, 3, 15, 8, 20, 6, 11];
+
+  // Khởi tạo biến đếm số lượng phần tử lớn hơn hoặc bằng 10
+  let count = 0;
+
+  // Duyệt qua từng phần tử trong mảng
+  for (let i = 0; i < numbers.length; i++) {
+    // Kiểm tra nếu phần tử lớn hơn hoặc bằng 10
+    if (numbers[i] >= 10) {
+      count++; // Tăng biến đếm lên 1
+    }
+  }
+
+  // Hiển thị kết quả
+  console.log("Số lượng số nguyên lớn hơn hoặc bằng 10 là: " + count);
+</script>
+
 </body>
 </html>

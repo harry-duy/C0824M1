@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm tính giai thừa của một số nguyên bất kỳ
+  function tinhGiaiThua(n) {
+    // Kiểm tra xem người dùng nhập vào có phải là số nguyên dương hay không
+    if (isNaN(n) === true) {
+      return "Lỗi: Bạn đã nhập không phải là số";
+    }
+    if (n < 0) {
+      return "Lỗi: Bạn đã nhập số âm";
+    }
+    // Nếu người dùng nhập vào là số nguyên dương, tính giai thừa
+    else {
+      let giaiThua = 1;
+      for (let i = 1; i <= n; i++) {
+        giaiThua *= i;
+      }
+      return giaiThua;
+    }
+  }
+
+  // Gọi hàm prompt để người dùng nhập vào số nguyên bất kỳ
+  let n = prompt("Xin mời bạn nhập vào số nguyên bất kỳ: ");
+
+  // Gọi hàm tinhGiaiThua với số người dùng nhập vào
+  let giaiThua = tinhGiaiThua(n);
+
+  // Hiển thị kết quả trên màn hình
+  document.write("Giai thừa của " + n + " là: " + giaiThua);
+</script>
+
 </body>
 </html>

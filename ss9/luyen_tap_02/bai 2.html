@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function meterToFeet(meter) {
+    if (isNaN(meter) || meter < 0) {
+      return "Đầu vào không hợp lệ. Vui lòng nhập một số dương.";
+    }
+    return meter * 3.2808;
+  }
+
+  let meterInput = prompt("Nhập số mét:");
+  let meter = parseFloat(meterInput);
+  let feet = meterToFeet(meter);
+
+  if (typeof feet === 'number') {
+    console.log(meter + " mét bằng " + feet.toFixed(2) + " feet"); // Làm tròn đến 2 chữ số thập phân
+  } else {
+    console.log(feet); // Hiển thị thông báo lỗi
+  }
+</script>
+
 </body>
 </html>

@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function calculateIncomeTax(income) {
+    let tax = 0;
+
+    if (income <= 60000000) {
+      tax = 0; // Miễn thuế
+    } else if (income <= 120000000) {
+      tax = (income - 60000000) * 0.05; // Thuế 5% cho phần thu nhập từ 60 - 120 triệu
+    } else if (income <= 210000000) {
+      tax = 3000000 + (income - 120000000) * 0.1; // Thuế 10% cho phần thu nhập từ 120 - 210 triệu
+    } else if (income <= 300000000) {
+      tax = 9000000 + (income - 210000000) * 0.15; // Thuế 15% cho phần thu nhập từ 210 - 300 triệu
+    } else {
+      tax = 36000000 + (income - 300000000) * 0.2; // Thuế 20% cho phần thu nhập trên 300 triệu
+    }
+
+    return tax;
+  }
+
+  let incomeInput = prompt("Nhập thu nhập:");
+  let income = parseFloat(incomeInput);
+
+  let tax = calculateIncomeTax(income);
+  console.log("Thuế thu nhập cá nhân là: " + tax);
+</script>
+
 </body>
 </html>

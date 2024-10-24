@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    function isEligibleForGrade10(age) {
+        if (typeof age !== 'number' || isNaN(age) || age < 0) {
+            return false; // Xử lý trường hợp nhập liệu không hợp lệ
+        }
+        return age >= 15;
+    }
+
+    let age = parseInt(prompt("Nhập tuổi của học sinh:"));
+    let isEligible = isEligibleForGrade10(age);
+
+    if (isEligible) {
+        console.log("Học sinh này đủ điều kiện vào học lớp 10.");
+    } else {
+        console.log("Học sinh này không đủ điều kiện vào học lớp 10.");
+    }
+</script>
+
 </body>
 </html>

@@ -1,10 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube</title>
+    <style>
+        body { background-color: black; color: white; font-family: Arial, sans-serif; }
+        .cube { display: inline-block; width: 50px; height: 50px; margin: 2px; border: 2px solid white; }
+        .face { display: inline-block; }
+        .face-row { text-align: center; }
+        .face-label { text-align: center; font-weight: bold; margin-bottom: 5px; }
+        button { margin: 5px; padding: 5px 10px; cursor: pointer; background-color: #222; border: none; color: white; }
+        #control-buttons-1, #control-buttons-2 { margin-top: 20px; }
+        #control-buttons-1 button, #control-buttons-2 button { font-size: 16px; padding: 10px 20px; }
+    </style>
 </head>
 <body>
-$END$
+<div id="cube-container">
+    <div class="face-row" id="up-face"></div>
+    <div class="face-row">
+        <div id="left-face" class="face"></div>
+        <div id="front-face" class="face"></div>
+        <div id="right-face" class="face"></div>
+        <div id="back-face" class="face"></div>
+    </div>
+    <div class="face-row" id="down-face"></div>
+</div>
+<div id="control-buttons-1">
+    <button onclick="rotateFace('front', true)">Front CW</button>
+    <button onclick="rotateFace('front', false)">Front CCW</button>
+    <button onclick="rotateFace('back', true)">Back CW</button>
+    <button onclick="rotateFace('back', false)">Back CCW</button>
+    <button onclick="rotateFace('left', true)">Left CW</button>
+    <button onclick="rotateFace('left', false)">Left CCW</button>
+    <button onclick="rotateFace('right', true)">Right CW</button>
+    <button onclick="rotateFace('right', false)">Right CCW</button>
+    <button onclick="rotateFace('up', true)">Up CW</button>
+    <button onclick="rotateFace('up', false)">Up CCW</button>
+    <button onclick="rotateFace('down', true)">Down CW</button>
+    <button onclick="rotateFace('down', false)">Down CCW</button>
+</div>
+<div id="control-buttons-2">
+    <button onclick="resetCube()">Reset</button>
+    <button onclick="shuffleCube()">Shuffle</button>
+</div>
+
+<script>
+    const colors = ['white', 'orange', 'green', 'red', 'blue', 'yellow'];
+    let cube = [];
+
+    function initCube() {
+        for (let i = 0; i < 6; i++) {
+            cube[i] = Array(3).fill().map(() => Array(3).fill(colors[i]));
+        }
+    }
+
+    function createCubeDOM() {
+        const faceIds = ['up-face', 'left-face', 'front-face', 'right-face', 'back-face', 'down-face'];
+        const faceIndices = { 'up-face': 0, 'left-face': 1, 'front-face': 2, 'right-face': 3, 'back-face': 4, 'down-face': 5 };
+        const container = document.getElementById('cube-container');
+
+        faceIds.forEach(faceId => {
+            const faceContainer = document.getElementById(faceId);
+            faceContainer.innerHTML = ''; // Clear existing content
+
+            const face = document.createElement('div');
+            face.className = 'face';
+
+            for (let j = 0; j < 3; j++) {
+                for (let k = 0; k < 3; k++) {
+                    const cubeElement = document.createElement('div');
+                    cubeElement.className = 'cube';
+                    cubeElement.style.backgroundColor = cube[faceIndices[faceId]][j][k];
+                    face.appendChild(cubeElement);
+                }
+                face.appendChild(document.createElement('br'));
+            }
+            faceContainer.appendChild(face);
+        });
+    }
+
+    function updateCubeDOM() {
+        const faceIds = ['up-face', 'left-face', 'front-face', 'right-face', 'back-face', 'down-face'];
+        const faceIndices = { 'up-face': 0, 'left-face': 1, 'front-face': 2, 'right-face': 3, 'back-face': 4, 'down-face': 5 };
+
+        faceIds.forEach(faceId => {
+            const faceContainer = document.getElementById(faceId).getElementsByClassName('cube');
+            let faceIndex = faceIndices[faceId];
+            let cubes = cube[faceIndex];
+
+            for (let j = 0; j < 3; j++) {
+                for (let k = 0; k < 3; k++) {
+                    faceContainer[j * 3 + k].style.backgroundColor = cubes[j][k];
+                }
+            }
+        });
+    }
+
+    function rotateFace(face, clockwise) {
+        const faceIndex = { 'front': 2, 'back': 4, 'left': 1, 'right': 3, 'up': 0, 'down': 5 }[face];
+        const temp = cube[faceIndex].map(row => [...row]);
+
+        if (clockwise) {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    cube[faceIndex][i][j] = temp[2 - j][i];
+                }
+            }
+        } else {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    cube[faceIndex][i][j] = temp[j][2 - i];
+                }
+            }
+        }
+
+        rotateAdjacentFaces(face, clockwise);
+        updateCubeDOM();
+    }
+
+    function rotateAdjacentFaces(face, clockwise) {
+        const rotations = {
+            'front': () => {
+                const temp = [...cube[0][2]];
+                if (clockwise) {
+                    cube[0][2] = cube[1].map(row => row[2]).reverse();
+                    cube[1].forEach((row, i) => { row[2] = cube[5][0][i]; });
+                    cube[5][0] = cube[3].map(row => row[0]).reverse();
+                    cube[3].forEach((row, i) => { row[0] = temp[i]; });
+                } else {
+                    cube[0][2] = cube[3].map(row => row[0]);
+                    cube[3].forEach((row, i) => { row[0] = cube[5][0][2 - i]; });
+                    cube[5][0] = cube[1].map(row => row[2]);
+                    cube[1].forEach((row, i) => { row[2] = temp[2 - i]; });
+                }
+            },
+            'back': () => {
+                const temp = [...cube[0][0]];
+                if (clockwise) {
+                    cube[0][0] = cube[3].map(row => row[2]);
+                    cube[3].forEach((row, i) => { row[2] = cube[5][2][2 - i]; });
+                    cube[5][2] = cube[1].map(row => row[0]);
+                    cube[1].forEach((row, i) => { row[0] = temp[2 - i]; });
+                } else {
+                    cube[0][0] = cube[1].map(row => row[0]).reverse();
+                    cube[1].forEach((row, i) => { row[0] = cube[5][2][i]; });
+                    cube[5][2] = cube[3].map(row => row[2]).reverse();
+                    cube[3].forEach((row, i) => { row[2] = temp[i]; });
+                }
+            },
+            'left': () => {
+                const temp = cube[0].map(row => row[0]);
+                if (clockwise) {
+                    cube[0].forEach((row, i) => { row[0] = cube[4].map(r => r[0])[2-i]; });
+                    cube[4].forEach((row, i) => { row[0] = cube[5].map(r => r[0])[i]; });
+                    cube[5].forEach((row, i) => { row[0] = cube[2].map(r => r[0])[2-i]; });
+                    cube[2].forEach((row, i) => { row[0] = temp[i]; });
+                } else {
+                    cube[0].forEach((row, i) => { row[0] = cube[2].map(r => r[0])[i]; });
+                    cube[2].forEach((row, i) => { row[0] = cube[5].map(r => r[0])[2 - i]; });
+                    cube[5].forEach((row, i) => { row[0] = cube[4].map(r => r[0])[i];});
+                    cube[4].forEach((row, i) => { row[0] = temp[2-i]; });
+                }
+            },
+            'right': () => {
+                const temp = cube[0].map(row => row[2]);
+                if (clockwise) {
+                    cube[0].forEach((row, i) => { row[2] = cube[2].map(r => r[2])[i]; });
+                    cube[2].forEach((row, i) => { row[2] = cube[5].map(r => r[2])[2-i]; });
+                    cube[5].forEach((row, i) => { row[2] = cube[4].map(r => r[2])[i];});
+                    cube[4].forEach((row, i) => { row[2] = temp[2-i]; });
+                } else {
+                    cube[0].forEach((row, i) => { row[2] = cube[4].map(r => r[2])[2-i]; });
+                    cube[4].forEach((row, i) => { row[2] = cube[5].map(r => r[2])[i]; });
+                    cube[5].forEach((row, i) => { row[2] = cube[2].map(r => r[2])[2 - i]; });
+                    cube[2].forEach((row, i) => { row[2] = temp[i]; });
+                }
+            },
+            'up': () => {
+                const temp = [...cube[2][0]];
+                if (clockwise) {
+                    cube[2][0] = cube[3][0];
+                    cube[3][0] = cube[4][0];
+                    cube[4][0] = cube[1][0];
+                    cube[1][0] = temp;
+                } else {
+                    cube[2][0] = cube[1][0];
+                    cube[1][0] = cube[4][0];
+                    cube[4][0] = cube[3][0];
+                    cube[3][0] = temp;
+                }
+            },
+            'down': () => {
+                const temp = [...cube[2][2]];
+                if (clockwise) {
+                    cube[2][2] = cube[1][2];
+                    cube[1][2] = cube[4][2];
+                    cube[4][2] = cube[3][2];
+                    cube[3][2] = temp;
+                } else {
+                    cube[2][2] = cube[3][2];
+                    cube[3][2] = cube[4][2];
+                    cube[4][2] = cube[1][2];
+                    cube[1][2] = temp;
+                }
+            }
+        };
+
+        rotations[face]();
+    }
+
+    function resetCube() {
+        initCube();
+        createCubeDOM();
+    }
+
+    function shuffleCube() {
+        const faces = ['front', 'back', 'left', 'right', 'up', 'down'];
+        const moves = 20;
+
+        for (let i = 0; i < moves; i++) {
+            const randomFace = faces[Math.floor(Math.random() * faces.length)];
+            const randomDirection = Math.random() < 0.5;
+            rotateFace(randomFace, randomDirection);
+        }
+    }
+
+    initCube();
+    createCubeDOM();
+</script>
 </body>
 </html>

@@ -1,10 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Quản lý Sản Phẩm</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-$END$
+<h1>Quản lý Sản Phẩm</h1>
+
+<!-- Form thêm sản phẩm -->
+<form id="addForm">
+    <input type="text" id="productName" placeholder="Tên sản phẩm">
+    <button type="button" onclick="addProduct()">Thêm</button>
+</form>
+
+<!-- Form sửa sản phẩm -->
+<form id="editForm" style="display:none;">
+    <input type="text" id="editProductName">
+    <button type="button" onclick="updateProduct()">Sửa</button>
+    <input type="hidden" id="editIndex">
+</form>
+
+<!-- Bảng danh sách sản phẩm -->
+<table id="productTable">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Tên Sản Phẩm</th>
+        <th>Hành Động</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    let products = [];
+
+    function displayProducts() {
+        const tbody = document.querySelector('#productTable tbody');
+        tbody.innerHTML = '';
+        products.forEach((product, index) => {
+            const row = `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${product}</td>
+                        <td>
+                            <button onclick="editProduct(${index})">Sửa</button>
+                            <button onclick="deleteProduct(${index})">Xoá</button>
+                        </td>
+                    </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+
+    function addProduct() {
+        const productName = document.getElementById('productName').value;
+        if(productName) {
+            products.push(productName);
+            displayProducts();
+            document.getElementById('productName').value = '';
+        }
+    }
+
+    function editProduct(index) {
+        document.getElementById('editProductName').value = products[index];
+        document.getElementById('editIndex').value = index;
+        document.getElementById('editForm').style.display = 'block';
+    }
+
+    function updateProduct() {
+        const index = document.getElementById('editIndex').value;
+        const newName = document.getElementById('editProductName').value;
+        if(newName) {
+            products[index] = newName;
+            displayProducts();
+            document.getElementById('editForm').style.display = 'none';
+        }
+    }
+
+    function deleteProduct(index) {
+        products.splice(index, 1);
+        displayProducts();
+    }
+
+    // Khởi tạo danh sách sản phẩm
+    displayProducts();
+</script>
 </body>
 </html>

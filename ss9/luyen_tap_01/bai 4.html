@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function findMax(num1, num2, num3) {
+    if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+      return "Đầu vào không hợp lệ. Vui lòng nhập số nguyên.";
+    }
+    return Math.max(num1, num2, num3);
+  }
+
+  let num1 = parseInt(prompt("Nhập số nguyên thứ nhất:"));
+  let num2 = parseInt(prompt("Nhập số nguyên thứ hai:"));
+  let num3 = parseInt(prompt("Nhập số nguyên thứ ba:"));
+
+  let max = findMax(num1, num2, num3);
+  console.log("Giá trị lớn nhất là: " + max);
+</script>
+
 </body>
 </html>

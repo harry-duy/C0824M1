@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
 </head>
 <body>
-$END$
+<input type="checkbox" id="I'm Coder">I'm Coder<br>
+<input type="checkbox" id="I Have a GirlFriend">I Have a GirlFriend<br>
+<input type="checkbox" id="I'm Rich">I'm Rich<br>
 </body>
+<script>
+    let coder =document.getElementById("I'm Coder")
+    let girlFriend =document.getElementById("I Have a GirlFriend")
+    let rich =document.getElementById("I'm Rich")
+    coder.addEventListener("click", function (){
+        if (coder.checked && girlFriend.checked){
+            rich.checked = false;
+        }
+    })
+    girlFriend.addEventListener("click", function (){
+        if (rich.checked && girlFriend.checked){
+            coder.checked = false;
+        }
+    })
+    rich.addEventListener("click", function (){
+        if (coder.checked && rich.checked){
+            girlFriend.checked = false;
+        }
+    })
+</script>
 </html>

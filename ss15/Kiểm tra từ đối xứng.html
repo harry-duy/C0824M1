@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function isPalindrome(str) {
+    function isPalindromeHelper(str, left, right) {
+      if (left >= right) {
+        return true;
+      }
+      if (str[left] !== str[right]) {
+        return false;
+      }
+      return isPalindromeHelper(str, left + 1, right - 1);
+    }
+
+    return isPalindromeHelper(str, 0, str.length - 1);
+  }
+
+  // Ví dụ sử dụng
+  console.log(isPalindrome("rotor")); // true
+  console.log(isPalindrome("redder")); // true
+  console.log(isPalindrome("motor")); // false
+</script>
+
 </body>
 </html>

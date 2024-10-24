@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tìm Chòm Sao Của Ngôi Sao</title>
 </head>
 <body>
-$END$
+<script>
+  // 1. Tạo mảng tên ngôi sao
+  const tenNgoiSao = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+
+  // 2. Tạo mảng tên chòm sao tương ứng
+  const tenChomSao = ["Ursa Minor", "Taurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+
+  // 3. Hàm tìm chòm sao dựa trên tên ngôi sao
+  function timChomSao(tenSao) {
+    const viTri = tenNgoiSao.indexOf(tenSao);
+    if (viTri !== -1) {
+      return tenChomSao[viTri];
+    } else {
+      return "Không tìm thấy chòm sao tương ứng.";
+    }
+  }
+
+  // 4. Nhập tên ngôi sao từ người dùng và hiển thị kết quả
+  const nhapTenSao = prompt("Nhập tên ngôi sao:", "").trim(); // .trim() để loại bỏ khoảng trắng đầu/cuối
+  if (nhapTenSao) { // Kiểm tra nếu người dùng đã nhập gì đó
+    const ketQua = timChomSao(nhapTenSao);
+    alert(`Chòm sao của ${nhapTenSao}: ${ketQua}`);
+  } else {
+    alert("Chưa nhập tên ngôi sao.");
+  }
+</script>
 </body>
 </html>

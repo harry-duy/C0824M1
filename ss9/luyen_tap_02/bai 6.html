@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function solveLinearEquation(a, b) {
+    if (a === 0) {
+      if (b === 0) {
+        return "Phương trình có vô số nghiệm.";
+      } else {
+        return "Phương trình vô nghiệm.";
+      }
+    } else {
+      let x = -b / a;
+      return "Nghiệm của phương trình là: x = " + x;
+    }
+  }
+
+  let aInput = prompt("Nhập hệ số a:");
+  let bInput = prompt("Nhập hệ số b:");
+  let a = parseFloat(aInput);
+  let b = parseFloat(bInput);
+
+  let solution = solveLinearEquation(a, b);
+  console.log(solution);
+</script>
+
 </body>
 </html>

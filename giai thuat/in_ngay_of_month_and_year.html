@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    function getNumberOfDays(month, year) {
+        // Tháng 1, 3, 5, 7, 8, 10, 12 có 31 ngày
+        if ([1, 3, 5, 7, 8, 10, 12].includes(month)) {
+            return 31;
+        }
+        // Tháng 4, 6, 9, 11 có 30 ngày
+        else if ([4, 6, 9, 11].includes(month)) {
+            return 30;
+        }
+        // Tháng 2 xử lý riêng với năm nhuận
+        else if (month === 2) {
+            // Kiểm tra năm nhuận
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                return 29;
+            } else {
+                return 28;
+            }
+        }
+        // Trường hợp không hợp lệ
+        else {
+            return "Tháng không hợp lệ!";
+        }
+    }
+
+    // Nhập tháng và năm
+    let month = parseInt(prompt("Nhập tháng (1-12):"));
+    let year = parseInt(prompt("Nhập năm:"));
+
+    // Kiểm tra dữ liệu đầu vào hợp lệ
+    if (isNaN(month) || isNaN(year) || month < 1 || month > 12) {
+        alert("Tháng hoặc năm không hợp lệ!");
+    } else {
+        let daysInMonth = getNumberOfDays(month, year);
+        alert(`Tháng ${month} năm ${year} có ${daysInMonth} ngày.`);
+    }
+</script>
+
 </body>
 </html>

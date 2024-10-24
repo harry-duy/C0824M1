@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Khởi tạo mảng rỗng
+  let numbers = [];
+
+  // Nhập 10 phần tử vào mảng
+  for (let i = 0; i < 10; i++) {
+    let number = parseInt(prompt("Nhap phan tu thu " + (i + 1) + ":"));
+    numbers.push(number);
+  }
+
+  // Sắp xếp mảng theo thứ tự giảm dần
+  numbers.sort(function(a, b) {
+    return b - a;
+  });
+
+  // Hiển thị ra mảng đã được sắp xếp
+  console.log("Mảng sau khi sắp xếp giảm dần: " + numbers);
+</script>
+
 </body>
 </html>

@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Khai báo một mảng ký tự
+  let characters = ['a', '1', 'b', '2', 'c', '3', '4', 'd', 'e', '5'];
+
+  // Lấy kích thước của mảng
+  let arrayLength = characters.length;
+
+  // Biến đếm số ký tự số
+  let count = 0;
+
+  // Duyệt qua từng phần tử trong mảng
+  for (let i = 0; i < arrayLength; i++) {
+    // Kiểm tra xem phần tử hiện tại có phải là ký tự số hay không
+    if (!isNaN(characters[i]) && characters[i] !== ' ') {
+      count++;
+    }
+  }
+
+  // In ra số lượng ký tự số trong mảng
+  console.log("Số ký tự số trong mảng là: " + count);
+</script>
+
 </body>
 </html>

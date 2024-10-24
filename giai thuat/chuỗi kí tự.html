@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    // Hàm đảo ngược chuỗi
+    function reverseString(str) {
+        return str.split('').reverse().join('');
+    }
+
+    // Hàm chuyển đổi chữ hoa <-> chữ thường cho từng ký tự
+    function swapCase(str) {
+        let result = '';
+        for (let i = 0; i < str.length; i++) {
+            let char = str[i];
+            if (char === char.toUpperCase()) {
+                result += char.toLowerCase(); // Nếu là chữ hoa, chuyển thành chữ thường
+            } else {
+                result += char.toUpperCase(); // Nếu là chữ thường, chuyển thành chữ hoa
+            }
+        }
+        return result;
+    }
+
+    // Nhập chuỗi từ người dùng
+    let inputString = prompt("Nhập một chuỗi ký tự:");
+
+    // Kiểm tra xem chuỗi có hợp lệ hay không
+    if (inputString === null || inputString.trim() === "") {
+        alert("Vui lòng nhập một chuỗi hợp lệ!");
+    } else {
+        // In ra các kết quả
+        alert(`Chuỗi đảo ngược: ${reverseString(inputString)}`);
+        alert(`Chuỗi chữ hoa: ${inputString.toUpperCase()}`);
+        alert(`Chuỗi chữ thường: ${inputString.toLowerCase()}`);
+        alert(`Chuỗi chữ hoa <-> chữ thường: ${swapCase(inputString)}`);
+    }
+</script>
+
 </body>
 </html>

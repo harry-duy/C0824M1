@@ -2,9 +2,157 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Class Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 1.2em;
+      white-space: pre-wrap; /* Preserve whitespace for better formatting */
+    }
+  </style>
 </head>
 <body>
-$END$
+
+<script>
+  class Mobile {
+    constructor(brand) {
+      this.brand = brand; // Brand of the mobile phone
+      this.battery = 100; // Battery level (0-100)
+      this.draftMessage = ''; // Message currently being drafted
+      this.inbox = []; // Messages in the inbox
+      this.sentMessages = []; // Messages that have been sent
+      this.isOn = false; // Phone status (on or off)
+    }
+
+    // Method to turn on the phone
+    turnOn() {
+      this.isOn = true;
+      console.log(`${this.brand} is now ON.`);
+    }
+
+    // Method to turn off the phone
+    turnOff() {
+      this.isOn = false;
+      console.log(`${this.brand} is now OFF.`);
+    }
+
+    // Method to charge the phone
+    charge() {
+      if (this.battery < 100) {
+        this.battery = 100;
+        console.log(`${this.brand} is fully charged.`);
+      } else {
+        console.log(`${this.brand} is already fully charged.`);
+      }
+    }
+
+    // Method to draft a message
+    draftMessage(content) {
+      if (!this.isOn) {
+        console.log(`${this.brand} is OFF. Cannot draft message.`);
+        return;
+      }
+      this.draftMessage = content;
+      console.log(`${this.brand} drafted a message: "${this.draftMessage}"`);
+      this.battery--; // Decrease battery
+    }
+
+    // Method to send a message to another mobile
+    sendMessage(receiver) {
+      if (!this.isOn) {
+        console.log(`${this.brand} is OFF. Cannot send message.`);
+        return;
+      }
+      if (this.draftMessage === '') {
+        console.log(`${this.brand} has no message to send.`);
+        return;
+      }
+      receiver.receiveMessage(this.draftMessage);
+      this.sentMessages.push(this.draftMessage);
+      this.draftMessage = ''; // Clear the draft after sending
+      this.battery--; // Decrease battery
+      console.log(`${this.brand} sent a message to ${receiver.brand}: "${this.sentMessages[this.sentMessages.length - 1]}"`);
+    }
+
+    // Method to receive a message from another mobile
+    receiveMessage(content) {
+      if (!this.isOn) {
+        console.log(`${this.brand} is OFF. Cannot receive message.`);
+        return;
+      }
+      this.inbox.push(content);
+      this.battery--; // Decrease battery
+      console.log(`${this.brand} received a message: "${content}"`);
+    }
+
+    // Method to view inbox messages
+    viewInbox() {
+      if (!this.isOn) {
+        console.log(`${this.brand} is OFF. Cannot view inbox.`);
+        return;
+      }
+      console.log(`${this.brand} Inbox:`);
+      if (this.inbox.length === 0) {
+        console.log("No messages in inbox.");
+      } else {
+        this.inbox.forEach((msg, index) => {
+          console.log(`${index + 1}: ${msg}`);
+        });
+      }
+      this.battery--; // Decrease battery
+    }
+
+    // Method to view sent messages
+    viewSentMessages() {
+      if (!this.isOn) {
+        console.log(`${this.brand} is OFF. Cannot view sent messages.`);
+        return;
+      }
+      console.log(`${this.brand} Sent Messages:`);
+      if (this.sentMessages.length === 0) {
+        console.log("No messages sent.");
+      } else {
+        this.sentMessages.forEach((msg, index) => {
+          console.log(`${index + 1}: ${msg}`);
+        });
+      }
+      this.battery--; // Decrease battery
+    }
+  }
+
+  // Example usage
+  const nokia = new Mobile("Nokia");
+  const iphone = new Mobile("iPhone");
+
+  // Turn on the phones
+  nokia.turnOn();
+  iphone.turnOn();
+
+  // Nokia drafts and sends a message to iPhone
+  nokia.draftMessage("Hello from Nokia!");
+  nokia.sendMessage(iphone);
+
+  // iPhone checks inbox
+  iphone.viewInbox();
+
+  // Check sent messages on Nokia
+  nokia.viewSentMessages();
+
+  // Turn off the phones
+  nokia.turnOff();
+  iphone.turnOff();
+
+
+</script>
 </body>
 </html>

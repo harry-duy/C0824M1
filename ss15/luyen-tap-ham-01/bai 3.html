@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>So sánh và Tính tổng</title>
+  <script>
+    function soSanhVaTinhTong(a, b) {
+      if (a > b) {
+        alert("Tham số thứ nhất lớn hơn tham số thứ hai!");
+        return; // Kết thúc hàm sau khi hiển thị thông báo
+      } else {
+        return a + b; // Trả về tổng nếu a <= b
+      }
+    }
+  </script>
 </head>
 <body>
-$END$
+<h1>So sánh và Tính tổng</h1>
+<p>Kết quả: <span id="ketQua"></span></p>
+
+<script>
+  // Gọi hàm và hiển thị kết quả
+  var so1 = 5;
+  var so2 = 10;
+  var ketQua = soSanhVaTinhTong(so1, so2);
+
+  if (ketQua !== undefined) {
+    document.getElementById("ketQua").innerHTML = ketQua;
+  } else {
+    document.getElementById("ketQua").innerHTML = "Không có tổng (tham số 1 > tham số 2)";
+  }
+</script>
 </body>
 </html>

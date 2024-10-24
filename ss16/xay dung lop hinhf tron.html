@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  let Circle = function(radius) {
+
+    this.radius = radius;
+
+    this.getRadius = function() {
+      return radius;
+    }
+    this.getArea = function() {
+      return Math.PI * radius * radius;
+    }
+
+  };
+  let circle = new Circle(2);
+  let radius = circle.getRadius(); // 2
+
+  let area = circle.getArea(); // 12.566370614359172
+  alert("radius: " + radius + "; area: " + area);
+  let circle1 = new Circle(5);
+  let radius1 = circle1.getRadius();
+
+  let area1 = circle1.getArea();
+  alert("radius: " + radius1 + "; area: " + area1);
+  let circle2= new Circle(10);
+  let radius2 = circle2.getRadius();
+
+  let area2 = circle2.getArea();
+  alert("radius: " + radius2 + "; area: " + area2);
+  let circle3 = new Circle(100);
+  let radius3 = circle3.getRadius();
+
+  let area3 = circle3.getArea();
+  alert("radius: " + radius3 + "; area: " + area3);
+</script>
+
 </body>
 </html>

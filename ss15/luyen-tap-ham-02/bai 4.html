@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không
+  function kiemTraKyTuSo(kyTu) {
+    // Kiểm tra xem người dùng nhập vào có phải là ký tự hay không
+    if (typeof kyTu !== "string") {
+      return "Lỗi: Bạn đã nhập không phải là ký tự";
+    }
+    // Nếu người dùng nhập vào là ký tự, kiểm tra xem ký tự có phải là số hay không
+    else {
+      return !isNaN(kyTu);
+    }
+  }
+
+  // Gọi hàm prompt để người dùng nhập vào ký tự
+  let kyTu = prompt("Xin mời bạn nhập vào một ký tự: ");
+
+  // Gọi hàm kiemTraKyTuSo với ký tự người dùng nhập vào
+  let ketQua = kiemTraKyTuSo(kyTu);
+
+  // Hiển thị kết quả trên màn hình
+  document.write("Ký tự " + kyTu + " có phải là ký tự số không? " + ketQua);
+</script>
+
 </body>
 </html>

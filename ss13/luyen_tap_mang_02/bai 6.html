@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    // Nhập vào mảng ký tự từ người dùng
+    let array = prompt("Nhập vào mảng ký tự:").split("");
+
+    // Duyệt qua từng phần tử trong mảng và thay thế các ký tự '-' bằng '_'
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === '-') {
+            array[i] = '_';
+        }
+    }
+
+    // Chuyển đổi mảng thành chuỗi và hiển thị kết quả
+    let resultString = array.join("");
+    console.log("Mảng sau khi thay thế: " + resultString);
+</script>
+
 </body>
 </html>

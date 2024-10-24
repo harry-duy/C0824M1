@@ -2,9 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Class Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 1.5em;
+    }
+  </style>
 </head>
 <body>
-$END$
+
+<script>
+  // Temperature class definition
+  class Temperature {
+    constructor(celsius) {
+      if (celsius < -273) {
+        throw new Error("Temperature cannot be below absolute zero (-273°C).");
+      }
+      this.celsius = celsius; // Store temperature in Celsius
+    }
+
+    // Method to convert Celsius to Fahrenheit
+    toFahrenheit() {
+      return (this.celsius * 9/5) + 32;
+    }
+
+    // Method to convert Celsius to Kelvin
+    toKelvin() {
+      return this.celsius + 273.15;
+    }
+  }
+
+  // Create an instance of Temperature and set it to 25°C
+  let temp = new Temperature(25);
+
+  // Get the Fahrenheit and Kelvin values
+  let fahrenheit = temp.toFahrenheit();
+  let kelvin = temp.toKelvin();
+
+  // Display the results on the screen
+  document.body.innerHTML += `
+            <div id="output">
+                Temperature in Celsius: ${temp.celsius}°C<br>
+                Temperature in Fahrenheit: ${fahrenheit.toFixed(2)}°F<br>
+                Temperature in Kelvin: ${kelvin.toFixed(2)} K
+            </div>
+        `;
+</script>
 </body>
 </html>

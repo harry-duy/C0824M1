@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    function calculateTriangleArea(a, b) {
+        if (isNaN(a) || isNaN(b) || a <= 0 || b <= 0) {
+            return "Đầu vào không hợp lệ. Vui lòng nhập hai số dương.";
+        }
+        return (a * b) / 2;
+    }
+
+    let aInput = prompt("Nhập cạnh a của tam giác vuông:");
+    let bInput = prompt("Nhập cạnh b của tam giác vuông:");
+    let a = parseFloat(aInput);
+    let b = parseFloat(bInput);
+    let area = calculateTriangleArea(a, b);
+
+    if (typeof area === 'number') {
+        console.log("Diện tích tam giác vuông với cạnh a = " + a + " và b = " + b + " là: " + area);
+    } else {
+        console.log(area); // Hiển thị thông báo lỗi
+    }
+</script>
+
 </body>
 </html>

@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    /**
+     * Đảo ngược mảng số nguyên mà không thay đổi mảng gốc
+     * @param {number[]} arr - Mảng số nguyên cần đảo ngược
+     * @returns {number[]} Bản sao của mảng đã đảo ngược
+     */
+    function daoNguyenMangKhongThayDoiGoc(arr) {
+        // Kiểm tra đầu vào là mảng
+        if (!Array.isArray(arr)) {
+            throw new Error("Đầu vào phải là một mảng");
+        }
+
+        // Kiểm tra tất cả phần tử trong mảng là số nguyên
+        if (!arr.every(Number.isInteger)) {
+            throw new Error("Tất cả phần tử trong mảng phải là số nguyên");
+        }
+
+        // Tạo bản sao của mảng và đảo ngược bản sao
+        return arr.slice().reverse();
+    }
+
+    // Ví dụ sử dụng
+    try {
+        const mangSoNguyen = [1, 2, 3, 4, 5];
+        console.log("Mảng ban đầu:", mangSoNguyen);
+        const mangDaDaoNguyen = daoNguyenMangKhongThayDoiGoc(mangSoNguyen);
+        console.log("Mảng sau khi đảo ngược:", mangDaDaoNguyen);
+        console.log("Mảng gốc sau khi gọi hàm (vẫn không thay đổi):", mangSoNguyen);
+    } catch (error) {
+        console.error("Lỗi:", error.message);
+    }
+</script>
+
 </body>
 </html>

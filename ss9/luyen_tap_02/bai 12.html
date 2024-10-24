@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function calculateCompoundInterest(principal, months, monthlyInterestRate) {
+    let amount = principal;
+
+    for (let i = 0; i < months; i++) {
+      amount += amount * monthlyInterestRate;
+    }
+
+    return amount;
+  }
+
+  let principalInput = prompt("Nhập số tiền ban đầu:");
+  let monthsInput = prompt("Nhập số tháng cho vay:");
+  let monthlyInterestRateInput = prompt("Nhập lãi suất hàng tháng (ví dụ: 0.01 cho 1%):");
+
+  let principal = parseFloat(principalInput);
+  let months = parseInt(monthsInput);
+  let monthlyInterestRate = parseFloat(monthlyInterestRateInput);
+
+  let totalAmount = calculateCompoundInterest(principal, months, monthlyInterestRate);
+  let interestEarned = totalAmount - principal;
+
+  console.log("Tổng số tiền sau " + months + " tháng là: " + totalAmount);
+  console.log("Lãi suất kiếm được là: " + interestEarned);
+</script>
+
 </body>
 </html>

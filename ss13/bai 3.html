@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    function toggleCase(input) {
+        let result = '';
+
+        // Duyệt từng ký tự trong chuỗi
+        for (let i = 0; i < input.length; i++) {
+            const char = input[i];
+
+            // Kiểm tra nếu ký tự là chữ thường
+            if (char === char.toLowerCase()) {
+                // Chuyển thành chữ hoa
+                result += char.toUpperCase();
+            } else {
+                // Chuyển thành chữ thường
+                result += char.toLowerCase();
+            }
+        }
+
+        return result;
+    }
+
+    // Ví dụ sử dụng
+    const input = prompt("Nhập vào chuỗi:"); // Nhập vào chuỗi từ người dùng
+    const output = toggleCase(input);
+    console.log(output); // In kết quả ra console
+</script>
+
 </body>
 </html>

@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    function countNegativeNumbersInString(inputString) {
+        // Chia chuỗi thành một mảng các từ
+        let words = inputString.split(" ");
+
+        // Khởi tạo biến đếm số nguyên âm
+        let countNegativeNumbers = 0;
+
+        // Duyệt qua từng từ trong mảng
+        for (let word of words) {
+            // Chuyển đổi từ thành một mảng các ký tự
+            let characters = word.split("");
+
+            // Duyệt qua từng ký tự trong từ
+            for (let char of characters) {
+                // Kiểm tra nếu ký tự là một số nguyên âm
+                if (["a", "e", "i", "o", "u"].includes(char.toLowerCase())) {
+                    // Tăng biến đếm lên 1
+                    countNegativeNumbers++;
+                    break; // Ngừng kiểm tra các ký tự trong từ này
+                }
+            }
+        }
+
+        // Trả về số lượng số nguyên âm
+        return countNegativeNumbers;
+    }
+
+    // Ví dụ sử dụng hàm
+    let inputString = "He is a nice person, she is not bad, but he is very angry.";
+    let count = countNegativeNumbersInString(inputString);
+    console.log("Số lượng số nguyên âm trong chuỗi là: " + count);
+</script>
+
 </body>
 </html>

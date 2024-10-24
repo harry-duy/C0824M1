@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tăng Giá Trị</title>
+  <script>
+    function tangGiaTri(so) {
+      return so + 1;
+    }
+  </script>
 </head>
 <body>
-$END$
+<h1>Kết quả tăng giá trị:</h1>
+<p id="ketQua"></p>
+
+<script>
+  // Gọi hàm và hiển thị kết quả
+  var soGoc = 5;
+  var ketQua = tangGiaTri(soGoc);
+  document.getElementById("ketQua").innerHTML = "Số gốc: " + soGoc + "<br>Sau khi tăng: " + ketQua;
+</script>
 </body>
 </html>

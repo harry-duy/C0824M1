@@ -1,10 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Lái Xe</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        #canvas {
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
-$END$
+<canvas id="canvas" width="800" height="600"></canvas>
+<script>
+    // Lấy đối tượng canvas
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Thiết lập kích thước canvas
+    canvas.width = 800;
+    canvas.height = 600;
+
+    // Tạo đối tượng xe
+    const xe = {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        width: 50,
+        height: 50,
+        speed: 2,
+        direction: 'up',
+        image: new Image()
+    };
+    xe.image.src = 'http://demo.codegym.vn/web/12/ninja-game/images/down1.png'; // Thay thế bằng đường dẫn đến ảnh xe
+
+    // Tạo đối tượng chướng ngại vật
+    const chuongNgaiVat = {
+        x: 0,
+        y: 0,
+        width: 50,
+        height: 50,
+        image: new Image()
+    };
+    chuongNgaiVat.image.src = 'https://png.pngtree.com/png-clipart/20230904/original/pngtree-barricade-icon-vector-png-image_10845638.png'; // Thay thế bằng đường dẫn đến ảnh chướng ngại vật
+
+    // Tạo đối tượng phần thưởng
+    const phanThuong = {
+        x: Math.random() * (canvas.width - 50),
+        y: Math.random() * (canvas.height - 50),
+        width: 20,
+        height: 20,
+        image: new Image()
+    };
+    phanThuong.image.src = 'https://img.lovepik.com/element/40035/8270.png_860.png'; // Thay thế bằng đường dẫn đến ảnh phần thưởng
+
+    // Tạo mảng chứa các chướng ngại vật
+    const chuongNgaiVats = [];
+    for (let i = 0; i < 5; i++) {
+        chuongNgaiVats.push({
+            x: Math.random() * (canvas.width - 50),
+            y: Math.random() * (canvas.height - 50),
+            width: 50,
+            height: 50,
+            image: new Image()
+        });
+        chuongNgaiVats[i].image.src = 'https://png.pngtree.com/png-clipart/20230904/original/pngtree-barricade-icon-vector-png-image_10845638.png'; // Thay thế bằng đường dẫn đến ảnh chướng ngại vật
+    }
+
+    // Tạo mảng chứa các phần thưởng
+    const phanThuongs = [];
+    for (let i = 0; i < 5; i++) {
+        phanThuongs.push({
+            x: Math.random() * (canvas.width - 20),
+            y: Math.random() * (canvas.height - 20),
+            width: 20,
+            height: 20,
+            image: new Image()
+        });
+        phanThuongs[i].image.src = 'https://img.lovepik.com/element/40035/8270.png_860.png'; // Thay thế bằng đường dẫn đến ảnh phần thưởng
+    }
+
+    // Thiết lập điểm số
+    let diemSo = 0;
+
+    // Hàm vẽ xe
+    function veXe() {
+        ctx.drawImage(xe.image, xe.x, xe.y, xe.width, xe.height);
+    }
+
+    // Hàm vẽ chướng ngại vật
+    function veChuongNgaiVat() {
+        ctx.drawImage(chuongNgaiVat.image, chuongNgaiVat.x, chuongNgaiVat.y, chuongNgaiVat.width, chuongNgaiVat.height);
+        for (let i = 0; i < chuongNgaiVats.length; i++) {
+            ctx.drawImage(chuongNgaiVats[i].image, chuongNgaiVats[i].x, chuongNgaiVats[i].y, chuongNgaiVats[i].width, chuongNgaiVats[i].height);
+        }
+    }
+
+    // Hàm vẽ phần thưởng
+    function vePhanThuong() {
+        ctx.drawImage(phanThuong.image, phanThuong.x, phanThuong.y, phanThuong.width, phanThuong.height);
+        for (let i = 0; i < phanThuongs.length; i++) {
+            ctx.drawImage(phanThuongs[i].image, phanThuongs[i].x, phanThuongs[i].y, phanThuongs[i].width, phanThuongs[i].height);
+        }
+    }
+
+    // Hàm cập nhật vị trí xe
+    function capNhatViTriXe() {
+        if (xe.direction === 'up') {
+            xe.y -= xe.speed;
+        } else if (xe.direction === 'down') {
+            xe.y += xe.speed;
+        } else if (xe.direction === 'left') {
+            xe.x -= xe.speed;
+        } else if (xe.direction === 'right') {
+            xe.x += xe.speed;
+        }
+
+        // Kiểm tra va chạm với cạnh canvas
+        if (xe.x < 0) {
+            xe.x = 0;
+        } else if (xe.x + xe.width > canvas.width) {
+            xe.x = canvas.width - xe.width;
+        }
+        if (xe.y < 0) {
+            xe.y = 0;
+        } else if (xe.y + xe.height > canvas.height) {
+            xe.y = canvas.height - xe.height;
+        }
+    }
+
+    // Hàm kiểm tra va chạm với chướng ngại vật
+    function kiemTraVaCham() {
+        for (let i = 0; i < chuongNgaiVats.length; i++) {
+            if (xe.x < chuongNgaiVats[i].x + chuongNgaiVats[i].width &&
+                xe.x + xe.width > chuongNgaiVats[i].x &&
+                xe.y < chuongNgaiVats[i].y + chuongNgaiVats[i].height &&
+                xe.y + xe.height > chuongNgaiVats[i].y) {
+                alert('Game Over!');
+                window.location.reload();
+            }
+        }
+    }
+
+    // Hàm kiểm tra ăn phần thưởng
+    function kiemTraAnPhanThuong() {
+        for (let i = 0; i < phanThuongs.length; i++) {
+            if (xe.x < phanThuongs[i].x + phanThuongs[i].width &&
+                xe.x + xe.width > phanThuongs[i].x &&
+                xe.y < phanThuongs[i].y + phanThuongs[i].height &&
+                xe.y + xe.height > phanThuongs[i].y) {
+                diemSo++;
+                phanThuongs.splice(i, 1);
+            }
+        }
+    }
+
+    // Hàm vẽ mọi thứ
+    function veMoiTinh() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        veXe();
+        veChuongNgaiVat();
+        vePhanThuong();
+        ctx.font = '24px Arial';
+        ctx.fillStyle = 'black';
+        ctx.fillText('Điểm số: ' + diemSo, 10, 30);
+    }
+
+    // Hàm chính
+    function main() {
+        capNhatViTriXe();
+        kiemTraVaCham();
+        kiemTraAnPhanThuong();
+        veMoiTinh();
+        requestAnimationFrame(main);
+    }
+
+    // Sự kiện nhấn phím
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp') {
+            xe.direction = 'up';
+        } else if (e.key === 'ArrowDown') {
+            xe.direction = 'down';
+        } else if (e.key === 'ArrowLeft') {
+            xe.direction = 'left';
+        } else if (e.key === 'ArrowRight') {
+            xe.direction = 'right';
+        } else if (e.key === 'Control') {
+            xe.speed = 5;
+        }
+    });
+
+    // Sự kiện thả phím
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'Control') {
+            xe.speed = 2;
+        }
+    });
+
+    // Bắt đầu game
+    main();
+</script>
 </body>
 </html>

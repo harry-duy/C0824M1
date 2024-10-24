@@ -1,10 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube</title>
+    <style>
+        body { background-color: black; color: white; font-family: Arial, sans-serif; }
+        .cube { display: inline-block; width: 50px; height: 50px; margin: 2px; border: 2px solid white; }
+        .face { display: inline-block; }
+        .face-row { text-align: center; }
+        .face-label { text-align: center; font-weight: bold; margin-bottom: 5px; }
+        button { margin: 5px; padding: 5px 10px; cursor: pointer; background-color: #222; border: none; color: white; }
+        #control-buttons-1, #control-buttons-2 { margin-top: 20px; }
+        #control-buttons-1 button, #control-buttons-2 button { font-size: 16px; padding: 10px 20px; }
+    </style>
 </head>
 <body>
-$END$
+<img src="Screenshot%202024-10-20%20210156.png">;
+<div id="cube-container">
+    <div class="face-row" id="up-face"></div>
+    <div class="face-row">
+        <div id="left-face" class="face"></div>
+        <div id="front-face" class="face"></div>
+        <div id="right-face" class="face"></div>
+        <div id="back-face" class="face"></div>
+    </div>
+    <div class="face-row" id="down-face"></div>
+</div>
+<div id="control-buttons-1">
+    <button onclick="rotateFace('front', true)">Front CW</button>
+    <button onclick="rotateFace('front', false)">Front CCW</button>
+    <button onclick="rotateFace('back', true)">Back CW</button>
+    <button onclick="rotateFace('back', false)">Back CCW</button>
+    <button onclick="rotateFace('left', true)">Left CW</button>
+    <button onclick="rotateFace('left', false)">Left CCW</button>
+    <button onclick="rotateFace('right', true)">Right CW</button>
+    <button onclick="rotateFace('right', false)">Right CCW</button>
+    <button onclick="rotateFace('up', true)">Up CW</button>
+    <button onclick="rotateFace('up', false)">Up CCW</button>
+    <button onclick="rotateFace('down', true)">Down CW</button>
+    <button onclick="rotateFace('down', false)">Down CCW</button>
+</div>
+<div id="control-buttons-2">
+    <button onclick="resetCube()">Reset</button>
+    <button onclick="shuffleCube()">Shuffle</button>
+</div>
+
+<script src="rubik.js"> </script>
 </body>
 </html>

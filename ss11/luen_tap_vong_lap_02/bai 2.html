@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function factorialIterative(n) {
+    if (n < 0) return undefined; // Giai thừa không được định nghĩa cho số âm
+    let result = 1;
+    for (let i = 2; i <= n; i++) {
+      result *= i;
+    }
+    return result;
+  }
+
+  const number = 5; // Số mà bạn muốn tính giai thừa
+  console.log(`Giai thừa của ${number} là: ${factorialIterative(number)}`);
+</script>
+
 </body>
 </html>

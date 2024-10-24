@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm nhận vào một số và kiểm tra xem nếu số đưa vào có phải là nguyên dương không
+  function kiemTraNguyenDuong(so) {
+    // Kiểm tra xem người dùng nhập vào có phải là số nguyên hay không
+    if (isNaN(so) === true) {
+      return "Lỗi: Bạn đã nhập không phải là số";
+    }
+    // Nếu người dùng nhập vào là số nguyên, kiểm tra xem số nguyên dương hay không
+    else {
+      return so > 0;
+    }
+  }
+
+  // Gọi hàm prompt để người dùng nhập vào số
+  let so = prompt("Xin mời bạn nhập vào số: ");
+
+  // Chuyển giá trị nhập vào thành số nguyên
+  so = parseInt(so);
+
+  // Gọi hàm kiemTraNguyenDuong với số
+  let ketQua = kiemTraNguyenDuong(so);
+
+  // Hiển thị kết quả trên màn hình
+  document.write("Số " + so + " có phải là nguyên dương không? " + ketQua);
+</script>
+
 </body>
 </html>

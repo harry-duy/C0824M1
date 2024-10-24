@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Nhập số phút gọi từ người dùng (sử dụng hàm prompt để mô phỏng)
+  let soPhut = parseInt(prompt("Nhập tổng số phút gọi trong tháng:"));
+
+  // Định nghĩa các thông số cước
+  const DON_GIA_100_PHUT_DAU = 500;  // Đơn giá cho 100 phút đầu (đồng/phút)
+  const DON_GIA_PHUT_THEM = 300;     // Đơn giá cho các phút gọi thêm (đồng/phút)
+  const PHI_DICH_VU = 20000;         // Phí dịch vụ cố định (đồng)
+
+  // Tính cước điện thoại
+  let tongCuoc;
+
+  if (soPhut <= 100) {
+    // Nếu số phút nhỏ hơn hoặc bằng 100 phút
+    tongCuoc = soPhut * DON_GIA_100_PHUT_DAU + PHI_DICH_VU;
+  } else {
+    // Nếu số phút lớn hơn 100 phút
+    let cuoc100PhutDau = 100 * DON_GIA_100_PHUT_DAU;
+    let cuocPhutThem = (soPhut - 100) * DON_GIA_PHUT_THEM;
+    tongCuoc = cuoc100PhutDau + cuocPhutThem + PHI_DICH_VU;
+  }
+
+  // In ra kết quả tổng cước
+  console.log("Tổng cước điện thoại trong tháng: " + tongCuoc + " đồng");
+</script>
+
 </body>
 </html>

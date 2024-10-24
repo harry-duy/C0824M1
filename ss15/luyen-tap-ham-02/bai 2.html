@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm tính diện tích hình tròn
+  function tinhDiencTichHinhTron(r) {
+    // Kiểm tra xem người dùng nhập vào có phải là số hay không
+    if (isNaN(r) === true) {
+      return "Lỗi: Bạn đã nhập không phải là số";
+    }
+    // Nếu người dùng nhập vào là số, tính diện tích
+    else {
+      return Math.PI * Math.pow(r, 2);
+    }
+  }
+
+  // Hàm tính chu vi hình tròn
+  function tinhChuViHinhTron(r) {
+    // Kiểm tra xem người dùng nhập vào có phải là số hay không
+    if (isNaN(r) === true) {
+      return "Lỗi: Bạn đã nhập không phải là số";
+    }
+    // Nếu người dùng nhập vào là số, tính chu vi
+    else {
+      return 2 * Math.PI * r;
+    }
+  }
+
+  // Gọi hàm prompt để người dùng nhập vào bán kính hình tròn
+  let r = prompt("Xin mời bạn nhập vào bán kính hình tròn: ");
+
+  // Gọi hàm tinhDiencTichHinhTron với bán kính người dùng nhập vào
+  let diencTich = tinhDiencTichHinhTron(r);
+
+  // Gọi hàm tinhChuViHinhTron với bán kính người dùng nhập vào
+  let chuVi = tinhChuViHinhTron(r);
+
+  // Hiển thị kết quả trên màn hình
+  document.write("Diện tích hình tròn là: " + diencTich);
+  document.write("<br>");
+  document.write("Chu vi hình tròn là: " + chuVi);
+</script>
+
 </body>
 </html>

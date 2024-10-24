@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function countWordsInString(inputString) {
+    // Chia chuỗi thành một mảng các từ bằng dấu cách
+    let words = inputString.split(" ");
+
+    // Đếm số lượng từ trong mảng
+    let wordCount = words.length;
+
+    // Trả về số lượng từ
+    return wordCount;
+  }
+
+  // Ví dụ sử dụng hàm
+  let inputString = "Hello world, this is a test string.";
+  let count = countWordsInString(inputString);
+  console.log("Số lượng từ trong chuỗi là: " + count);
+</script>
+
 </body>
 </html>

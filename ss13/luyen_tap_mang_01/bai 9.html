@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    // Khởi tạo mảng a và b rỗng
+    let a = [];
+    let b = [];
+
+    // Nhập 10 phần tử vào mảng a
+    for (let i = 0; i < 10; i++) {
+        let number = parseInt(prompt("Nhap phan tu thu " + (i + 1) + " cho mang a:"));
+        a.push(number);
+    }
+
+    // Nhập 10 phần tử vào mảng b
+    for (let i = 0; i < 10; i++) {
+        let number = parseInt(prompt("Nhap phan tu thu " + (i + 1) + " cho mang b:"));
+        b.push(number);
+    }
+
+    // Khởi tạo mảng c gồm 20 phần tử số nguyên
+    let c = new Array(20).fill(0);
+
+    // Nối mảng b vào mảng c
+    for (let i = 0; i < b.length; i++) {
+        c[i] = b[i];
+    }
+
+    // Nối mảng a vào mảng c
+    for (let i = 0; i < a.length; i++) {
+        c[b.length + i] = a[i];
+    }
+
+    // Hiển thị ra mảng c
+    console.log("Mảng c sau khi nối mảng b và a: " + c);
+</script>
+
 </body>
 </html>

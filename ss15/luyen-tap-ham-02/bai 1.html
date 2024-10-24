@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    // Hàm tính bình phương của một số bất kỳ
+    function tinhBinhPhuong(so) {
+        // Kiểm tra xem người dùng nhập vào có phải là số hay không
+        if (isNaN(so) === true) {
+            return "Lỗi: Bạn đã nhập không phải là số";
+        }
+        // Nếu người dùng nhập vào là số, tính bình phương
+        else {
+            return Math.pow(so, 2);
+        }
+    }
+
+    // Gọi hàm prompt để người dùng nhập vào số bất kỳ
+    let so = prompt("Xin mời bạn nhập vào số bất kỳ: ");
+
+    // Gọi hàm tinhBinhPhuong với số người dùng nhập vào
+    let binhPhuong = tinhBinhPhuong(so);
+
+    // Hiển thị kết quả trên màn hình
+    document.write("Bình phương của " + so + " là: " + binhPhuong);
+</script>
+
 </body>
 </html>

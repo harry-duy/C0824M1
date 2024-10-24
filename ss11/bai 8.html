@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Game Guess Number</title>
 </head>
 <body>
-$END$
+<button onclick="startGame()">Play</button>
+
+<script>
+    function startGame() {
+        var attempts = 0;
+        var min = prompt("INPUT min:");
+        var max = prompt("INPUT max:");
+
+        var randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        var guess = -1;
+
+        while (guess != randomNum && attempts < 3) {
+            guess = prompt("Number you guess:");
+            attempts ++ ;
+            if (guess < randomNum) {
+                alert("Greater");
+            } else if (guess > randomNum) {
+                alert("less");
+            }
+        }
+        if (guess ==  randomNum){
+            alert("Bingo! Number guess is " + randomNum + ". Congratulation!");
+        }else {
+            alert("Better luck next time");
+        }
+    }
+</script>
 </body>
 </html>

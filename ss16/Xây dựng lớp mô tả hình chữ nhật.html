@@ -1,10 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Class Example</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<script>
+    // Rectangle class definition
+    class Rectangle {
+        // Constructor to initialize length and width
+        constructor(length, width) {
+            this.length = length;
+            this.width = width;
+        }
+
+        // Method to calculate area
+        getArea() {
+            return this.length * this.width;
+        }
+
+        // Method to calculate perimeter
+        getPerimeter() {
+            return 2 * (this.length + this.width);
+        }
+
+        // Method to display the rectangle on the canvas
+        draw(ctx) {
+            ctx.fillStyle = 'lightblue'; // Color of the rectangle
+            ctx.fillRect(50, 50, this.width, this.length); // Draw rectangle
+            ctx.strokeStyle = 'black'; // Border color
+            ctx.strokeRect(50, 50, this.width, this.length); // Outline rectangle
+        }
+    }
+
+    // Create a canvas element and append it to the body
+    const canvas = document.createElement('canvas');
+    canvas.id = 'rectangleCanvas';
+    canvas.width = 400;
+    canvas.height = 400;
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+
+    // Create an instance of Rectangle
+    let myRectangle = new Rectangle(100, 200); // Length: 100, Width: 200
+
+    // Draw the initial rectangle
+    myRectangle.draw(ctx);
+
+    // Display area and perimeter in the console
+    console.log("Area:", myRectangle.getArea());
+    console.log("Perimeter:", myRectangle.getPerimeter());
+
+    // Change dimensions of the rectangle
+    myRectangle.length = 150; // New length
+    myRectangle.width = 100; // New width
+
+    // Clear the canvas and redraw the rectangle with new dimensions
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+    myRectangle.draw(ctx); // Draw updated rectangle
+
+    // Display updated area and perimeter in the console
+    console.log("Updated Area:", myRectangle.getArea());
+    console.log("Updated Perimeter:", myRectangle.getPerimeter());
+</script>
 </body>
 </html>

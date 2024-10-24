@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Khởi tạo mảng số nguyên
+  let numbers = [5, 12, 7, 10, 3, 15, 8, 20, 6, 11];
+
+  // Khởi tạo biến lưu trữ giá trị lớn nhất
+  let max = numbers[0];
+
+  // Khởi tạo biến lưu trữ tổng các phần tử
+  let sum = 0;
+
+  // Duyệt qua từng phần tử trong mảng
+  for (let i = 0; i < numbers.length; i++) {
+    // Kiểm tra nếu phần tử hiện tại lớn hơn giá trị lớn nhất hiện tại
+    if (numbers[i] > max) {
+      max = numbers[i]; // Cập nhật giá trị lớn nhất
+    }
+    // Cộng dồn giá trị của phần tử hiện tại vào tổng
+    sum += numbers[i];
+  }
+
+  // Tính giá trị trung bình
+  let average = sum / numbers.length;
+
+  // Hiển thị kết quả
+  console.log("Giá trị lớn nhất trong mảng là: " + max);
+  console.log("Giá trị trung bình của các phần tử trong mảng là: " + average.toFixed(2));
+</script>
+
 </body>
 </html>

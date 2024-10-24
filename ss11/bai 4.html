@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let a = 0;
+    let b = 1;
+    let temp;
+    while (true) {
+        if (a % 5 === 0 && a !== 0) {
+            console.log(a);
+            break;
+        }
+        temp = a + b;
+        a = b;
+        b = temp;
+    }
+</script>
+
 </body>
 </html>

@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm tính giai thừa lẻ hoặc giai thừa chẵn
+  function doubleFactorial(n) {
+    let result = 1;
+    if (n % 2 === 0) {
+      // Nếu n là số chẵn, tính giai thừa chẵn
+      for (let i = 2; i <= n; i += 2) {
+        result *= i;
+      }
+    } else {
+      // Nếu n là số lẻ, tính giai thừa lẻ
+      for (let i = 1; i <= n; i += 2) {
+        result *= i;
+      }
+    }
+    return result;
+  }
+
+  // Nhập giá trị n từ người dùng
+  let n = parseInt(prompt("Nhập số nguyên dương n:"));
+
+  // Kiểm tra xem n có hợp lệ hay không
+  if (isNaN(n) || n <= 0) {
+    alert("Vui lòng nhập một số nguyên dương!");
+  } else {
+    let result = doubleFactorial(n);
+    alert(`Giai thừa lẻ hoặc giai thừa chẵn của ${n} là: ${result}`);
+  }
+</script>
+
 </body>
 </html>

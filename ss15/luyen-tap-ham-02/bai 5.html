@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  // Hàm nhận vào 3 số nguyên bất kỳ và trả về số nguyên có giá trị nhỏ nhất
+  function timSoNhoNhat(a, b, c) {
+    // Kiểm tra xem các số được nhập vào có phải là số nguyên hay không
+    if (isNaN(a) === true || isNaN(b) === true || isNaN(c) === true) {
+      return "Lỗi: Bạn đã nhập không phải là số";
+    }
+    // Nếu các số được nhập vào đều là số nguyên, trả về số nguyên có giá trị nhỏ nhất
+    else {
+      let min = Math.min(a, b, c);
+      return min;
+    }
+  }
+
+  // Gọi hàm prompt để người dùng nhập vào 3 số nguyên bất kỳ
+  let a = prompt("Xin mời bạn nhập vào số nguyên thứ nhất: ");
+  let b = prompt("Xin mời bạn nhập vào số nguyên thứ hai: ");
+  let c = prompt("Xin mời bạn nhập vào số nguyên thứ ba: ");
+
+  // Chuyển các giá trị nhập vào thành số nguyên
+  a = parseInt(a);
+  b = parseInt(b);
+  c = parseInt(c);
+
+  // Gọi hàm timSoNhoNhat với 3 số nguyên
+  let soNhoNhat = timSoNhoNhat(a, b, c);
+
+  // Hiển thị kết quả trên màn hình
+  document.write("Số nguyên có giá trị nhỏ nhất là: " + soNhoNhat);
+</script>
+
 </body>
 </html>

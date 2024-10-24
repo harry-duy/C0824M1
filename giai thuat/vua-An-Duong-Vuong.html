@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  function beautifulArray(arr) {
+
+    let totalSum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      totalSum += arr[i];
+    }
+
+    let leftSum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+
+      const rightSum = totalSum - leftSum - arr[i];
+
+
+      if (leftSum === rightSum) {
+        return true;
+      }
+
+
+      leftSum += arr[i];
+    }
+
+    return false; //
+  }
+
+  // Ví dụ sử dụng
+  const a1 = [1, 2, 3];
+  const a2 = [1, 2, 3, 3];
+
+  console.log(`beautifulArray(${JSON.stringify(a1)}) =`, beautifulArray(a1)); // false
+  console.log(`beautifulArray(${JSON.stringify(a2)}) =`, beautifulArray(a2)); // true
+</script>
+
 </body>
 </html>

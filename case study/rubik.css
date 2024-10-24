@@ -1,0 +1,16 @@
+body { background-color: black; color: white; font-family: Arial, sans-serif; }
+.cube { display: inline-block; width: 50px; height: 50px; margin: 2px; border: 2px solid white; }
+.face { display: inline-block; }
+.face-row { text-align: center; }
+.face-label { text-align: center; font-weight: bold; margin-bottom: 5px; }
+button { margin: 5px; padding: 5px 10px; cursor: pointer; background-color: #222; border: none; color: white; }
+#control-buttons-1, #control-buttons-2 { margin-top: 20px; }
+#control-buttons-1 button, #control-buttons-2 button { font-size: 16px; padding: 10px 20px; }
+
+/* Positioning the faces */
+#up-face { margin-right: 10.5%; margin-bottom: 2px; }
+#left-face { display: inline-block; vertical-align: top; margin-right: 2px; }
+#front-face { display: inline-block; }
+#right-face { display: inline-block; vertical-align: top; margin-left: 2px; }
+#back-face { display: inline-block; vertical-align: top; margin-left: 2px; }
+#down-face { margin-right: 10.5%; margin-top: 2px; }

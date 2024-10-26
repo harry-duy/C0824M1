@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function tinhTongBoiChung() {
+    let mangSoNguyen = [];
+
+    while (true) {
+      let input = prompt("Nhập một số nguyên (hoặc nhập -1 để dừng):");
+
+      if (input === null || input.trim() === "" ) {
+        console.log("Vui lòng nhập một số nguyên hợp lệ.");
+        continue;
+      }
+
+      let soNguyen = parseInt(input);
+
+      if(isNaN(soNguyen)){
+        console.log("Vui lòng nhập một số nguyên hợp lệ.");
+        continue;
+      }
+
+      if (soNguyen === -1) {
+        break;
+      }
+
+      mangSoNguyen.push(soNguyen);
+
+      if (mangSoNguyen.length > 20) {
+        console.log("Mảng đã vượt quá 20 phần tử. Dừng nhập liệu.");
+        mangSoNguyen.pop();
+        break;
+      }
+    }
+    let chuoi = mangSoNguyen.join(" - ")
+    document.write("Mảng số nguyên:", chuoi);
+
+    let tong = 0;
+    let boiChung = [];
+
+    for (let i = 0; i < mangSoNguyen.length; i++) {
+      if (mangSoNguyen[i] % 3 === 0 && mangSoNguyen[i] % 5 === 0) {
+        boiChung.push(mangSoNguyen[i]);
+        tong += mangSoNguyen[i];
+      }
+    }
+    let result = boiChung.toString()
+    let total = tong.toString()
+    document.write("Các số là bội chung của 3 và 5:", result);
+    document.write("Tổng các số là bội chung của 3 và 5:", total);
+  }
+
+  tinhTongBoiChung();
+</script>
+
+</body>
+</html>

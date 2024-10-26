@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý khách hàng</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<h1>Quản lý khách hàng</h1>
+
+<label for="maKhachHang">Mã khách hàng:</label>
+<input type="text" id="maKhachHang"><br><br>
+
+<label for="tenKhachHang">Tên khách hàng:</label>
+<input type="text" id="tenKhachHang"><br><br>
+
+<label for="soDienThoai">Số điện thoại:</label>
+<input type="text" id="soDienThoai"><br><br>
+
+<label for="diaChi">Địa chỉ:</label>
+<input type="text" id="diaChi"><br><br>
+
+<label for="email">Email:</label>
+<input type="text" id="email"><br><br>
+
+<button onclick="themKhachHang()">Thêm khách hàng</button>
+
+<h2>Danh sách khách hàng</h2>
+<div id="danhSachKhachHang"></div>
+<script>
+    class KhachHang {
+        constructor(maKhachHang, tenKhachHang, soDienThoai, diaChi, email) {
+            this.maKhachHang = maKhachHang;
+            this.tenKhachHang = tenKhachHang;
+            this.soDienThoai = soDienThoai;
+            this.diaChi = diaChi;
+            this.email = email;
+        }
+    }
+
+    let danhSachKhachHang = [];
+    function themKhachHang() {
+        let maKhachHang = document.getElementById("maKhachHang").value;
+        let tenKhachHang = document.getElementById("tenKhachHang").value;
+        let soDienThoai = document.getElementById("soDienThoai").value;
+        let diaChi = document.getElementById("diaChi").value;
+        let email = document.getElementById("email").value;
+
+        let khachHangMoi = new KhachHang(maKhachHang, tenKhachHang, soDienThoai, diaChi, email);
+        danhSachKhachHang.push(khachHangMoi);
+
+        document.getElementById("maKhachHang").value = "";
+        document.getElementById("tenKhachHang").value = "";
+        document.getElementById("soDienThoai").value = "";
+        document.getElementById("diaChi").value = "";
+        document.getElementById("email").value = "";
+
+        hienThiDanhSachKhachHang();
+    }
+
+    function hienThiDanhSachKhachHang() {
+        let danhSach = document.getElementById("danhSachKhachHang");
+        danhSach.innerHTML = "";
+
+        if (danhSachKhachHang.length === 0) {
+            danhSach.innerHTML = "<p>Danh sách khách hàng trống!</p>";
+            return;
+        }
+
+        let tableHTML = "<table><tr><th>Mã khách hàng</th><th>Tên khách hàng</th><th>Số điện thoại</th><th>Địa chỉ</th><th>Email</th></tr>";
+        for (let i = 0; i < danhSachKhachHang.length; i++) {
+            let khachHang = danhSachKhachHang[i];
+            tableHTML += `<tr><td>${khachHang.maKhachHang}</td><td>${khachHang.tenKhachHang}</td><td>${khachHang.soDienThoai}</td><td>${khachHang.diaChi}</td><td>${khachHang.email}</td></tr>`;
+        }
+        tableHTML += "</table>";
+        danhSach.innerHTML = tableHTML;
+    }
+</script>
+</body>
+</html>

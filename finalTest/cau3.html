@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function demCapSo() {
+        let n = parseInt(prompt("Nhập số lượng phần tử của mảng (n <= 50):"));
+
+
+        while (n <= 0 || n > 50 || isNaN(n)) {
+            n = parseInt(prompt("Số lượng phần tử không hợp lệ. Vui lòng nhập lại (n <= 50):"));
+        }
+
+        let arr = [];
+        for (let i = 0; i < n; i++) {
+            let phanTu = parseInt(prompt("Nhập phần tử thứ " + (i + 1) + ":"));
+            while (isNaN(phanTu)) {
+                phanTu = parseInt(prompt("Phần tử không hợp lệ. Vui lòng nhập lại:"));
+            }
+            arr.push(phanTu);
+        }
+
+        let k = parseInt(prompt("Nhập số nguyên dương k:"));
+
+
+        while (k <= 0 || isNaN(k)) {
+            k = parseInt(prompt("Số nguyên dương k không hợp lệ. Vui lòng nhập lại:"));
+        }
+
+        let count = 0;
+        let capSo = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if ((arr[i] + arr[j]) % k === 0) {
+                    count++;
+                    capSo.push([arr[i], arr[j]]);
+                }
+            }
+        }
+
+        console.log("Mảng số nguyên:", arr);
+        console.log("Số nguyên dương k:", k);
+        console.log("Các cặp số có tổng chia hết cho " + k + " là:", capSo);
+        console.log("Số cặp số có tổng chia hết cho " + k + " là: " + count);
+    }
+
+    demCapSo();
+</script>
+
+</body>
+</html>
